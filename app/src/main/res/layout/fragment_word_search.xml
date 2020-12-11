@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tabs.WordSearch">
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <SearchView
+            android:id="@+id/searchviewid"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:iconifiedByDefault = "false"
+            android:queryHint = "Scramble words"
+            android:maxWidth="370dp"
+            android:background="@drawable/searchview_background"
+            android:queryBackground="@android:color/transparent"
+            android:layout_marginBottom="20dp"
+            />
+
+        <ExpandableListView
+            android:layout_below="@id/searchviewid"
+            android:animateLayoutChanges="true"
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:groupIndicator = "@null"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:childDivider="@null"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/ExpandListViewId"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeId"
+            android:visibility="invisible"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/progressbar_white_bg"
+            android:elevation="8dp"
+            >
+
+            <ProgressBar
+                android:id="@+id/progressbarId"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                />
+
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

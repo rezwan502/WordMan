@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="2"
+    android:background="@drawable/child_background"
+   >
+
+    <LinearLayout
+        android:layout_weight="1"
+       android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:padding="10dp"
+        android:background="#9DD8F3"
+        >
+
+        <TextView
+            android:id="@+id/PartsOfSpeech"
+            android:layout_width="22dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="left"
+            android:text="partOfSpeech"
+            android:fontFamily="@font/lobster_regular"
+            android:textSize="17dp" />
+
+
+    </LinearLayout>
+
+    <View style="@style/Divider"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:padding="10dp"
+
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:text="Def:"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/lobster_regular"
+            android:id="@+id/childTextDefinitionDef"
+            />
+
+
+        <TextView
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Definition"
+
+            android:textSize="20dp"
+            android:id="@+id/childTextDefinition"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:weightSum="5"
+        android:orientation="horizontal"
+        android:padding="10dp"
+
+        >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:text="Ex:"
+            android:layout_weight="1"
+            android:textSize="20dp"
+
+            android:fontFamily="@font/lobster_regular"
+            android:id="@+id/childTextDefinitionEx"
+            />
+
+
+        <TextView
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Definition"
+
+            android:textSize="20dp"
+
+            android:id="@+id/childTextex"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/parent_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/headerlist"
+        android:weightSum="6"
+        >
+            <CheckBox
+                android:id="@+id/starId"
+                style="?android:attr/starStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:focusable="false"/>
+            <ImageView
+                android:id="@+id/deletebtn"
+                android:layout_weight="0.5"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-50dp"
+                android:src="@drawable/ic_baseline_delete_forever_24"
+
+                android:gravity="center"
+                />
+        <TextView
+            android:id="@+id/headerTextViewId"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:text="Word"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/lobster_regular"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/AudioId_hader"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:src="@drawable/ic_baseline_volume_up_24"
+            android:clickable="false"
+            android:visibility="invisible"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
