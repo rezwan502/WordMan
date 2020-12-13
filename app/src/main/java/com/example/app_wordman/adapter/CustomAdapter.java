@@ -124,9 +124,9 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         star = convertView.findViewById(R.id.starId);
         delete = convertView.findViewById(R.id.deletebtn);
 
-        if(currentFrag == "Fav"){
-            star.setVisibility(convertView.INVISIBLE);
-            delete.setVisibility(convertView.VISIBLE);
+        if(currentFrag.equals("Fav")){
+            star.setVisibility(View.INVISIBLE);
+            delete.setVisibility(View.VISIBLE);
 
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -138,20 +138,20 @@ public class CustomAdapter extends BaseExpandableListAdapter {
             });
 
 
-        }else if(currentFrag == "Search"){
-            star.setVisibility(convertView.INVISIBLE);
-            delete.setVisibility(convertView.INVISIBLE);
+        }else if(currentFrag.equals("Search")){
+            star.setVisibility(View.INVISIBLE);
+            delete.setVisibility(View.INVISIBLE);
             // final MainActivity main = new MainActivity();
         }
 
 
         ImageView play = convertView.findViewById(R.id.AudioId_hader);
-        if(isExpanded == false){
-            play.setVisibility(convertView.INVISIBLE);
+        if(!isExpanded){
+            play.setVisibility(View.INVISIBLE);
         }else{
-            play.setVisibility(convertView.VISIBLE);
-            if(currentFrag == "Search")
-              star.setVisibility(convertView.VISIBLE);
+            play.setVisibility(View.VISIBLE);
+            if(currentFrag.equals("Search"))
+              star.setVisibility(View.VISIBLE);
         }
 
         if(isExpanded) {

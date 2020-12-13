@@ -142,6 +142,10 @@ public class DisplayWords {
                 return;
             }
 
+            child = new ArrayList<String>();
+            partsofspeech = new ArrayList<>();
+            example = new ArrayList<>();
+
             for(int t=0;t<datarespond.size();t++) {
 
                 Example objectdata = datarespond.get(t);
@@ -165,9 +169,6 @@ public class DisplayWords {
 
                 List<Meaning> meanings = objectdata.getMeanings();
 
-                child = new ArrayList<String>();
-                partsofspeech = new ArrayList<>();
-                example = new ArrayList<>();
                 //Meaning partsofSpeech = meanings.get(0);
                 //String pos = partsofSpeech.getPartOfSpeech();
 
@@ -197,13 +198,12 @@ public class DisplayWords {
 
 
                 }
+            }
 
                 //  ListAudio.put(strword,audio);
                 ListExample.put(strword, example);
                 Listpartsofspeech.put(strword, partsofspeech);
                 Listchild.put(strword, child);
-
-            }
 
         }catch (IOException e){
             e.printStackTrace();
