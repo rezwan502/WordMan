@@ -122,66 +122,88 @@ public class DisplayWords {
         try{
             Response<List<Example>> response = call.execute();
             List<Example> datarespond = response.body();
-            Example objectdata = datarespond.get(0);
 
-            //audio
+            if(datarespond == null){
 
-            List<Phonetic> phonetics = objectdata.getPhonetics();
-            //  audio = new ArrayList<>();
-            String AudioURL = "";
-            int p = 0;
-            for(Phonetic phone : phonetics){
-                AudioURL = phone.getAudio();
-                //audio.add(AudioURL);
-                break;
+                child = new ArrayList<String>();
+                partsofspeech = new ArrayList<>();
+                example = new ArrayList<>();
+
+                child.add("Not found in server. Please check in internet");
+                example.add("Not found in server. Please check in internet");
+                // partsofspeech
+                partsofspeech.add("404");
+
+                ListExample.put(strword,example);
+                Listpartsofspeech.put(strword,partsofspeech);
+                Listchild.put(strword,child);
+
+
+                return;
             }
-            Listheader.get(indexofaudio).setAudio(AudioURL);
-            //Toast.makeText(MainActivity.this,"AudioURL: " + AudioURL,Toast.LENGTH_LONG).show();
+
+            for(int t=0;t<datarespond.size();t++) {
+
+                Example objectdata = datarespond.get(t);
+
+                //audio
+
+                List<Phonetic> phonetics = objectdata.getPhonetics();
+                //  audio = new ArrayList<>();
+                String AudioURL = "";
+                int p = 0;
+                for (Phonetic phone : phonetics) {
+                    AudioURL = phone.getAudio();
+                    //audio.add(AudioURL);
+                    break;
+                }
+                Listheader.get(indexofaudio).setAudio(AudioURL);
+                //Toast.makeText(MainActivity.this,"AudioURL: " + AudioURL,Toast.LENGTH_LONG).show();
 
 
-            // meaning
+                // meaning
 
-            List<Meaning> meanings = objectdata.getMeanings();
+                List<Meaning> meanings = objectdata.getMeanings();
 
-            child = new ArrayList<String>();
-            partsofspeech = new ArrayList<>();
-            example = new ArrayList<>();
-            //Meaning partsofSpeech = meanings.get(0);
-            //String pos = partsofSpeech.getPartOfSpeech();
+                child = new ArrayList<String>();
+                partsofspeech = new ArrayList<>();
+                example = new ArrayList<>();
+                //Meaning partsofSpeech = meanings.get(0);
+                //String pos = partsofSpeech.getPartOfSpeech();
 
-            // Log.d("PartsOfSpeech: ",pos);
+                // Log.d("PartsOfSpeech: ",pos);
 
-            for(Meaning mean : meanings){
+                for (Meaning mean : meanings) {
 
 
-                List<Definition> def =  mean.getDefinitions();
+                    List<Definition> def = mean.getDefinitions();
 
-                for(int i=0; i<def.size(); i++) {
+                    for (int i = 0; i < def.size(); i++) {
 
-                    Definition definition = def.get(i);
+                        Definition definition = def.get(i);
 
-                    //textViewResult.append(mean.getPartOfSpeech()+"\n"+definition.getDefinition());
-                    //textViewResult.append("\n");
-                    String defi = definition.getDefinition();
-                    String exp = definition.getExample();
-                    // audio.add(AudioURL);
-                    child.add(defi);
-                    example.add(exp);
-                    // partsofspeech
-                    String pos = mean.getPartOfSpeech();
-                    Log.d("PartsOfSpeech: ", pos);
-                    partsofspeech.add(pos);
+                        //textViewResult.append(mean.getPartOfSpeech()+"\n"+definition.getDefinition());
+                        //textViewResult.append("\n");
+                        String defi = definition.getDefinition();
+                        String exp = definition.getExample();
+                        // audio.add(AudioURL);
+                        child.add(defi);
+                        example.add(exp);
+                        // partsofspeech
+                        String pos = mean.getPartOfSpeech();
+                        Log.d("PartsOfSpeech: ", pos);
+                        partsofspeech.add(pos);
+                    }
+
+
                 }
 
+                //  ListAudio.put(strword,audio);
+                ListExample.put(strword, example);
+                Listpartsofspeech.put(strword, partsofspeech);
+                Listchild.put(strword, child);
 
             }
-
-            //  ListAudio.put(strword,audio);
-            ListExample.put(strword,example);
-            Listpartsofspeech.put(strword,partsofspeech);
-            Listchild.put(strword,child);
-
-
 
         }catch (IOException e){
             e.printStackTrace();

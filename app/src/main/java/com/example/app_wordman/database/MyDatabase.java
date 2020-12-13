@@ -29,7 +29,7 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public int checkWord(String mString){
-        String SELECT_ALL = "SELECT * FROM favourite WHERE Word Like '"+mString+"'";
+        String SELECT_ALL = "SELECT * FROM Favourite WHERE Word Like '"+mString+"'";
         int cnt = 0;
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -43,18 +43,11 @@ public class MyDatabase extends SQLiteAssetHelper {
     }
 
     public Cursor DisplayFavourite(){
-        Log.d("SQLFav","SELECT_ALL");
+
         String SELECT_ALL = "SELECT * FROM Favourite";
-        Log.d("SQLFav",SELECT_ALL);
+
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(SELECT_ALL, null);
-        // SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-
-        // String [] sqlSelect = {"0 _id", "Word"};
-        // String sqlTables = "Dictionary";
-
-        // qb.setTables(sqlTables);
-        // Cursor c = qb.query(db, sqlSelect, "Word =" + mString, null,null, null, null);
 
         return cursor;
     }
@@ -62,7 +55,21 @@ public class MyDatabase extends SQLiteAssetHelper {
 
     public Cursor displayAllData(String mString){
 
-        String SELECT_ALL = "SELECT * FROM dictionary WHERE Word Like '"+mString+"'";
+        int len = mString.length();
+
+        String Que="Like ";
+
+        // '%n%' OR '%e%' OR '%t%'
+
+        for(int i=0; i<len; i++){
+            Que+="'"+"%"+mString.charAt(i)+"%"+"'";
+            if(i != len -1 ){
+                Que+=" OR ";
+            }
+        }
+
+
+        String SELECT_ALL = "SELECT * FROM dictionary WHERE Length(Word)="+len+" and Word "+Que;
         Log.d("SQL",SELECT_ALL);
 
 

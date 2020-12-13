@@ -155,7 +155,7 @@ public class FavWord extends Fragment {
                 ImageView play = v.findViewById(R.id.AudioId_hader);
                 HeaderModel headerModel = (HeaderModel) getGroupPos(groupPosition);
                 //String header = headerModel.getHeader();
-                String AudioURL = headerModel.getAudio();
+                final String AudioURL = headerModel.getAudio();
 
 
 
@@ -179,6 +179,10 @@ public class FavWord extends Fragment {
                     play.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            if(AudioURL == null){
+                                Toast.makeText(getContext(), "No Audio Found", Toast.LENGTH_LONG).show();
+                            }
 
                             if (mediaPlayer.isPlaying()) {
 

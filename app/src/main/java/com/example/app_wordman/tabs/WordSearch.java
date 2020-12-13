@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -174,6 +175,13 @@ public class WordSearch extends Fragment {
                 displayWords.setContext(getContext());
                 displayWords.setFrag("Search");
                 List<HeaderModel> searchedwords = findWordSearch.findWords(input);
+
+                if(searchedwords.size()<1){
+                    Toast.makeText(getContext(),"No Word Found",Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+
                 displayWords.setHeader(searchedwords);
                 displayWords.startAsyncTask();
 
@@ -187,9 +195,8 @@ public class WordSearch extends Fragment {
             }
         });
 
+        expandeblelist = view.findViewById(R.id.ExpandListViewId);
 
-
-        if (check & number > 1) {
             expandeblelist.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
                 @Override
                 public void onGroupExpand(int groupPosition) {
@@ -203,14 +210,11 @@ public class WordSearch extends Fragment {
                 }
             });
 
-        }
-
-        expandeblelist = view.findViewById(R.id.ExpandListViewId);
         expandeblelist.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
                 final ImageView play = v.findViewById(R.id.AudioId_hader);
-
+                final CheckBox star = v.findViewById(R.id.starId);
                 colV = v;
 
                 play.setClickable(true);
@@ -227,8 +231,8 @@ public class WordSearch extends Fragment {
                 if(status == "true"){
 
                 HeaderModel headerModel = (HeaderModel) getGroupPos(groupPosition);
-                //String header = headerModel.getHeader();
-                String AudioURL = headerModel.getAudio();
+                final String header = headerModel.getHeader();
+                final String AudioURL = headerModel.getAudio();
 
                 mediaPlayer = new MediaPlayer();
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -237,6 +241,11 @@ public class WordSearch extends Fragment {
                 play.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
+                        if(AudioURL == ""){
+                            Toast.makeText(getContext(), "No Audio Found", Toast.LENGTH_LONG).show();
+                        }
+
                         if (mediaPlayer.isPlaying()) {
                             //play.setEnabled(true);
                             mediaPlayer.stop();
@@ -249,6 +258,15 @@ public class WordSearch extends Fragment {
                     }
 
                 });
+
+                    star.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(star.isChecked()){
+                                myDataBaseHelper.insertFavourite(header);
+                            }
+                        }
+                    });
 
                 }
 

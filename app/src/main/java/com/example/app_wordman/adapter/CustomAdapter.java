@@ -139,19 +139,9 @@ public class CustomAdapter extends BaseExpandableListAdapter {
 
 
         }else if(currentFrag == "Search"){
-            star.setVisibility(convertView.VISIBLE);
+            star.setVisibility(convertView.INVISIBLE);
             delete.setVisibility(convertView.INVISIBLE);
-
             // final MainActivity main = new MainActivity();
-            star.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(star.isChecked()){
-                        Log.d("InsideHEADER",header);
-                        myDataBaseHelper.insertFavourite(header);
-                    }
-                }
-            });
         }
 
 
@@ -160,7 +150,16 @@ public class CustomAdapter extends BaseExpandableListAdapter {
             play.setVisibility(convertView.INVISIBLE);
         }else{
             play.setVisibility(convertView.VISIBLE);
+            if(currentFrag == "Search")
+              star.setVisibility(convertView.VISIBLE);
         }
+
+        if(isExpanded) {
+            textView.setTextColor(context.getResources().getColor(R.color.design_default_color_error));
+        }else{
+            textView.setTextColor(context.getResources().getColor(R.color.textBlack));
+        }
+
 
         return convertView;
     }
@@ -187,6 +186,13 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         if(child_exp == null){
             child_exp = "---";
         }
+        if(child_exp == null){
+            child_pos = "---";
+        }
+        if(child_exp == null){
+            child = "---";
+        }
+
 
         textViewpos.setText(child_pos);
         textViewdef.setText(child);

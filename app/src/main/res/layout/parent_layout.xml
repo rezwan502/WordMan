@@ -48,6 +48,7 @@
             android:id="@+id/AudioId_hader"
             android:layout_weight="1"
             android:gravity="right"
+            android:layout_marginRight="15dp"
             android:src="@drawable/ic_baseline_volume_up_24"
             android:clickable="false"
             android:visibility="invisible"
