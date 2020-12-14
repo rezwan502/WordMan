@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.rezwan502.app_wordman.R;
 import com.rezwan502.app_wordman.adapter.CustomAdapter;
@@ -120,6 +121,15 @@ public class DisplayWords {
 
         try{
             Response<List<Example>> response = call.execute();
+
+
+            if (!response.isSuccessful()) {
+                Toast.makeText(context,"Code: " + response.code(), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+
+
             List<Example> datarespond = response.body();
 
             if(datarespond == null){

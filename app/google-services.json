@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "754041737238",
+    "project_id": "wordman-3cf24",
+    "storage_bucket": "wordman-3cf24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:754041737238:android:6ef938542a9ea370d0a537",
+        "android_client_info": {
+          "package_name": "com.rezwan502.app_wordman"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "754041737238-cjg6f9qfn3h63h3qlalfljdn58cm6bsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0zCFSpyjo8mAVckiS37GBpUCWksa2-Pk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "754041737238-cjg6f9qfn3h63h3qlalfljdn58cm6bsq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

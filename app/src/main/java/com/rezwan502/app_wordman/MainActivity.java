@@ -35,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
-
-
-
         if(!isNetworkAvailable()==true) {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
@@ -51,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).show();
         }
+
+
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
 
 
         tabLayout = findViewById(R.id.tabLayout);
@@ -117,10 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     requestCode);
         }
         else {
-            Toast.makeText(MainActivity.this,
-                    "Permission already granted",
-                    Toast.LENGTH_SHORT)
-                    .show();
+           // Toast.makeText(MainActivity.this,"Permission already granted",Toast.LENGTH_SHORT).show();
         }
     }
 
