@@ -9,7 +9,9 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/slideViewPager"
         android:layout_width="match_parent"
-        android:layout_height="661dp"></androidx.viewpager.widget.ViewPager>
+        android:layout_height="600dp">
+
+    </androidx.viewpager.widget.ViewPager>
 
     <LinearLayout
         android:orientation="vertical"
@@ -66,12 +68,11 @@
         android:id="@+id/prevbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/slideViewPager"
+
         android:background="?android:attr/selectableItemBackground"
-        android:layout_marginTop="20dp"
         android:text="prev"
         android:layout_alignParentBottom="true"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:textSize="25dp"
         android:textStyle="bold"
         android:textColor="@color/colorTransparentWhite"
@@ -81,8 +82,7 @@
         android:id="@+id/nextbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/slideViewPager"
-        android:layout_marginTop="20dp"
+
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/selectableItemBackground"
