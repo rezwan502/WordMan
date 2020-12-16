@@ -1,6 +1,7 @@
 package com.rezwan502.app_wordman.wordfind;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.rezwan502.app_wordman.R;
 import com.rezwan502.app_wordman.adapter.CustomAdapter;
@@ -120,15 +123,8 @@ public class DisplayWords {
         Call<List<Example>> call = definitionInterface.getDefinitions(strword);
 
         try{
+
             Response<List<Example>> response = call.execute();
-
-
-            if (!response.isSuccessful()) {
-                Toast.makeText(context,"Code: " + response.code(), Toast.LENGTH_LONG).show();
-                return;
-            }
-
-
 
             List<Example> datarespond = response.body();
 
@@ -147,30 +143,44 @@ public class DisplayWords {
                 Listpartsofspeech.put(strword,partsofspeech);
                 Listchild.put(strword,child);
 
-
                 return;
+
             }
 
             child = new ArrayList<String>();
             partsofspeech = new ArrayList<>();
             example = new ArrayList<>();
-
+            String found="";
+            String temp="";
+            boolean check = false;
             for(int t=0;t<datarespond.size();t++) {
 
                 Example objectdata = datarespond.get(t);
 
                 //audio
-
-                List<Phonetic> phonetics = objectdata.getPhonetics();
-                //  audio = new ArrayList<>();
-                String AudioURL = "";
                 int p = 0;
-                for (Phonetic phone : phonetics) {
-                    AudioURL = phone.getAudio();
-                    //audio.add(AudioURL);
-                    break;
+                if(t==0) {
+
+                    temp = objectdata.getWord();
+
+                    if(!temp.equals(strword)){
+                        check = true;
+                        found = temp;
+                    }
+
+                    List<Phonetic> phonetics = objectdata.getPhonetics();
+
+                    //  audio = new ArrayList<>();
+                    String AudioURL = "";
+                    for (Phonetic phone : phonetics) {
+                        AudioURL = phone.getAudio();
+                        //audio.add(AudioURL);
+                        break;
+                    }
+
+
+                    Listheader.get(indexofaudio).setAudio(AudioURL);
                 }
-                Listheader.get(indexofaudio).setAudio(AudioURL);
                 //Toast.makeText(MainActivity.this,"AudioURL: " + AudioURL,Toast.LENGTH_LONG).show();
 
 
@@ -201,6 +211,10 @@ public class DisplayWords {
                         example.add(exp);
                         // partsofspeech
                         String pos = mean.getPartOfSpeech();
+                        if(check) {
+                            temp = "Origin Word: " + found + " (" + pos +")";
+                            pos=temp;
+                        }
                         Log.d("PartsOfSpeech: ", pos);
                         partsofspeech.add(pos);
                     }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SlideActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/slideViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="661dp"></androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/descLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/dotsLayout"
+        android:background="@drawable/customborder"
+        android:layout_marginBottom="20dp"
+        android:padding="40dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dotsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slideViewPager"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tutorial"
+        android:textSize="40dp"
+        android:rotation="310"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        android:background="@drawable/tutorial_bg"
+        android:textColor="@android:color/holo_red_dark"/>
+
+
+    <Button
+        android:id="@+id/skipbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btnborder"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:text="Skip"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_alignParentRight="true"
+
+        />
+
+    <Button
+        android:id="@+id/prevbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slideViewPager"
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_marginTop="20dp"
+        android:text="prev"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorTransparentWhite"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/nextbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/slideViewPager"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="next"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/colorTransparentWhite"/>
+
+</RelativeLayout>

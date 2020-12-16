@@ -19,6 +19,10 @@ import com.rezwan502.app_wordman.adapter.PageAdapter;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -35,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(!isNetworkAvailable()==true) {
+        if(!isNetworkAvailable()) {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("Internet Connection Alert")
@@ -91,18 +95,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private boolean isNetworkAvailable(){
+    private boolean isNetworkAvailable() {
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
 
         NetworkInfo wificonn = connectivityManager.getNetworkInfo(connectivityManager.TYPE_WIFI);
         NetworkInfo mobileconn = connectivityManager.getNetworkInfo(connectivityManager.TYPE_MOBILE);
 
+
+
         if((wificonn != null && wificonn.isConnected()) || mobileconn != null && mobileconn.isConnected()){
             return true;
         }else{
             return false;
-        }
+      }
     }
 
     public void checkPermission(String permission, int requestCode)
