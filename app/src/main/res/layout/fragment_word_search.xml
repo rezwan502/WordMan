@@ -23,7 +23,6 @@
             android:layout_height="wrap_content"
             android:iconifiedByDefault = "false"
             android:queryHint = "Scramble words"
-            android:maxWidth="370dp"
             android:background="@drawable/searchview_background"
             android:queryBackground="@android:color/transparent"
             android:layout_marginBottom="20dp"

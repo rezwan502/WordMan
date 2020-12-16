@@ -142,7 +142,7 @@ public class WordSearch extends Fragment {
             public boolean onQueryTextSubmit(String query) {
 
                 check = true;
-                input = query;
+                input = query.trim();
                 /**
                  This code works fine
                  */

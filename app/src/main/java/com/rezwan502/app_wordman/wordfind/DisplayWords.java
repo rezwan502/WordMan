@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -107,8 +108,9 @@ public class DisplayWords {
         }
     }
 
-    public void listprocessing(){
 
+
+    public void listprocessing(){
         expandeblelist = view.findViewById(R.id.ExpandListViewId);
         customAdapter = new CustomAdapter(context,Listheader,Listchild,Listpartsofspeech,ListExample,currentFrag);
         expandeblelist.setAdapter(customAdapter);
@@ -310,11 +312,10 @@ public class DisplayWords {
             }
 
  */
-            Log.d("onPostExecute","Done ");
             //Toast.makeText(MainActivity.this, "Finished", Toast.LENGTH_SHORT).show();
             // activity.progressBar.setVisibility(View.INVISIBLE);
-            listprocessing();
 
+            listprocessing();
         }
     }
 
